@@ -1,27 +1,3 @@
-// export default function Stats() {
-//   return (
-//     <section id="services" className="bg-blue-900 text-white py-10">
-//       <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-//         <div>
-//           <p className="text-3xl font-bold">235+</p>
-//           <p>Doctors</p>
-//         </div>
-//         <div>
-//           <p className="text-3xl font-bold">420+</p>
-//           <p>Medical Tests</p>
-//         </div>
-//         <div>
-//           <p className="text-3xl font-bold">30K+</p>
-//           <p>Patients Helped</p>
-//         </div>
-//         <div>
-//           <p className="text-3xl font-bold">305+</p>
-//           <p>Awards Won</p>
-//         </div>
-//       </div>
-//     </section>
-//   );
-// }
 
 
 import { useEffect, useState } from "react";

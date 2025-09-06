@@ -1,169 +1,3 @@
-// // import { useState } from "react";
-// // import axios from "axios";
-
-// // export default function SymptomPage() {
-// //   const [input, setInput] = useState("");
-// //   const [botReply, setBotReply] = useState("");
-// //   const [sessionId, setSessionId] = useState(null);
-// //   const [loading, setLoading] = useState(false);
-
-// //   const handleSubmit = async () => {
-// //     if (!input.trim()) return;
-// //     setLoading(true);
-
-// //     try {
-// //       const params = { message: input };
-// //       if (sessionId) params.sessionId = sessionId;
-
-// //       const res = await axios.get("http://localhost:8081/chat", { params });
-// //       const [session, botText] = res.data.split("\nBot: ");
-// //       const sessionVal = session.replace("Session: ", "").trim();
-
-// //       if (!sessionId) setSessionId(sessionVal);
-
-// //       setBotReply(botText);
-// //     } catch (err) {
-// //       console.error(err);
-// //       setBotReply("⚠️ Error contacting AI consultant.");
-// //     } finally {
-// //       setLoading(false);
-// //     }
-// //   };
-
-// //   return (
-// //     <section className="flex-1 flex flex-col items-center justify-center bg-gray-100 p-6">
-// //       <h3 className="text-2xl font-semibold mb-4">Check Your Symptoms</h3>
-// //       <div className="flex w-full max-w-lg gap-2">
-// //         <input
-// //           type="text"
-// //           value={input}
-// //           onChange={(e) => setInput(e.target.value)}
-// //           placeholder="Enter your symptoms..."
-// //           className="flex-1 border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500"
-// //           onKeyDown={(e) => e.key === "Enter" && handleSubmit()}
-// //         />
-// //         <button
-// //           onClick={handleSubmit}
-// //           className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg"
-// //         >
-// //           OK
-// //         </button>
-// //       </div>
-
-// //       {loading && <p className="mt-4 text-gray-500">Analyzing symptoms...</p>}
-// //       {botReply && (
-// //         <div className="mt-6 bg-white shadow p-4 rounded-lg max-w-lg text-gray-800">
-// //           <h4 className="font-bold text-blue-700">AI Consultant says:</h4>
-// //           <p className="mt-2">{botReply}</p>
-// //         </div>
-// //       )}
-// //     </section>
-// //   );
-// // }
-
-
-// import { useState } from "react";
-// import axios from "axios";
-
-// export default function SymptomPage() {
-//   const [input, setInput] = useState("");
-//   const [botReply, setBotReply] = useState("");
-//   const [sessionId, setSessionId] = useState(null);
-//   const [loading, setLoading] = useState(false);
-
-//   const handleSubmit = async () => {
-//     if (!input.trim()) return;
-//     setLoading(true);
-
-//     try {
-//       const params = { message: input };
-//       if (sessionId) params.sessionId = sessionId;
-
-//       // Call Spring Boot backend
-//       const res = await axios.get("http://localhost:8081/chat", { params });
-
-//       // Parse backend response -> "Session: <uuid>\nBot: <reply>"
-//       const [sessionLine, botLine] = res.data.split("\nBot: ");
-//       const sessionVal = sessionLine.replace("Session: ", "").trim();
-
-//       if (!sessionId) setSessionId(sessionVal);
-
-//       setBotReply(botLine);
-//     } catch (err) {
-//       console.error(err);
-//       setBotReply("⚠️ Error contacting AI consultant.");
-//     } finally {
-//       setLoading(false);
-//       setInput(""); // clear input box
-//     }
-//   };
-
-//   const handleReset = async () => {
-//     if (!sessionId) return; // nothing to reset
-//     try {
-//       await axios.delete("http://localhost:8081/chat", {
-//         params: { sessionId },
-//       });
-//       setSessionId(null);
-//       setBotReply("");
-//       setInput("");
-//       alert("Conversation reset successfully ✅");
-//     } catch (err) {
-//       console.error(err);
-//       alert("⚠️ Failed to reset conversation.");
-//     }
-//   };
-
-//   return (
-//     <section className="flex-1 flex flex-col items-center justify-center bg-gray-100 p-6">
-//       <h3 className="text-2xl font-semibold mb-4">Check Your Symptoms</h3>
-
-//       {/* Input */}
-//       <div className="flex w-full max-w-lg gap-2">
-//         <input
-//           type="text"
-//           value={input}
-//           onChange={(e) => setInput(e.target.value)}
-//           placeholder="Enter your symptoms..."
-//           className="flex-1 border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500"
-//           onKeyDown={(e) => e.key === "Enter" && handleSubmit()}
-//         />
-//         <button
-//           onClick={handleSubmit}
-//           className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg"
-//         >
-//           OK
-//         </button>
-//         {sessionId && (
-//           <button
-//             onClick={handleReset}
-//             className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg"
-//           >
-//             Reset
-//           </button>
-//         )}
-//       </div>
-
-//       {/* Loading */}
-//       {loading && <p className="mt-4 text-gray-500">Analyzing symptoms...</p>}
-
-//       {/* Bot Reply */}
-//       {botReply && (
-//         <div className="mt-6 bg-white shadow p-4 rounded-lg max-w-lg text-gray-800">
-//           <h4 className="font-bold text-blue-700">AI Consultant :</h4>
-//           <p className="mt-2 whitespace-pre-line">{botReply}</p>
-//           {sessionId && (
-//             <p className="mt-2 text-xs text-gray-400">
-//               Session ID: {sessionId}
-//             </p>
-//           )}
-//         </div>
-//       )}
-//     </section>
-//   );
-// }
-
-
 
 import { useState } from "react";
 import axios from "axios";
@@ -184,7 +18,7 @@ export default function SymptomPage() {
       if (sessionId) params.sessionId = sessionId;
 
       // Call Spring Boot backend
-      const res = await axios.get("http://localhost:8081/chat", { params });
+      const res = await axios.get(import.meta.env.BACKEND_API_URL, { params });
 
       // Parse backend response -> "Session: <uuid>\nBot: <reply>"
       const [sessionLine, botLine] = res.data.split("\nBot: ");
@@ -205,7 +39,7 @@ export default function SymptomPage() {
   const handleReset = async () => {
     if (!sessionId) return; // nothing to reset
     try {
-      await axios.delete("http://localhost:8081/chat", {
+      await axios.delete(import.meta.env.BACKEND_API_URL, {
         params: { sessionId },
       });
       setSessionId(null);
