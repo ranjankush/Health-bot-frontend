@@ -18,7 +18,8 @@ export default function SymptomPage() {
       if (sessionId) params.sessionId = sessionId;
 
       // Call Spring Boot backend
-      const res = await axios.get(import.meta.env.BACKEND_API_URL, { params });
+      const res = await axios.get(import.meta.env.VITE_BACKEND_API_URL, { params });
+      console.log("Backend URL:", import.meta.env.VITE_BACKEND_API_URL);
 
       // Parse backend response -> "Session: <uuid>\nBot: <reply>"
       const [sessionLine, botLine] = res.data.split("\nBot: ");
@@ -39,7 +40,7 @@ export default function SymptomPage() {
   const handleReset = async () => {
     if (!sessionId) return; // nothing to reset
     try {
-      await axios.delete(import.meta.env.BACKEND_API_URL, {
+      await axios.delete(import.meta.env.VITE_BACKEND_API_URL, {
         params: { sessionId },
       });
       setSessionId(null);
