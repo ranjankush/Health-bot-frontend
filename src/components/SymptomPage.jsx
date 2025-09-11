@@ -58,29 +58,31 @@ export default function SymptomPage() {
       <h3 className="text-2xl font-semibold mb-4">Check Your Symptoms</h3>
 
       {/* Input */}
-      <div className="flex w-full max-w-lg gap-2">
+      <div className="flex flex-wrap w-full max-w-lg gap-2">
         <input
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="Enter your symptoms..."
-          className="flex-1 border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500"
+          className="flex-1 min-w-[180px] border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500"
           onKeyDown={(e) => e.key === "Enter" && handleSubmit()}
         />
-        <button
+       <div className="flex gap-2 w-full sm:w-auto">
+         <button
           onClick={handleSubmit}
-          className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg"
+          className="flex-1 sm:flex-none bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg"
         >
           OK
         </button>
         {sessionId && (
           <button
             onClick={handleReset}
-            className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg"
+            className="flex-1 sm:flex-none bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg"
           >
             Reset
           </button>
         )}
+       </div>
       </div>
 
       {/* Loading */}
