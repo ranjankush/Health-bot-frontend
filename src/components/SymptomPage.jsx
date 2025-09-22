@@ -89,7 +89,7 @@ export default function SymptomPage() {
       {loading && <p className="mt-4 text-gray-500">Analyzing symptoms...</p>}
 
       {/* AI Reply Box (always present with fixed height) */}
-      <div className="mt-6 w-full max-w-4xl min-h-[140px]">
+      {/* <div className="mt-6 w-full max-w-4xl min-h-[140px]">
         {botReply ? (
           <div className="bg-[#f0f7ff] shadow p-4 rounded-xl text-gray-800">
             <h4 className="font-bold text-3xl text-blue-700 text-center">AI Consultant :</h4>
@@ -105,7 +105,31 @@ export default function SymptomPage() {
             AI response will appear here...
           </div>
         )}
+      </div> */}
+
+      {/* AI Reply Box */}
+<div className="mt-6 w-full max-w-4xl h-[300px] md:h-[400px] lg:h-[500px] overflow-y-auto">
+  {botReply ? (
+    <div className="bg-[#f0f7ff] shadow p-4 rounded-xl text-gray-800 flex flex-col h-full">
+      <h4 className="font-bold text-2xl md:text-3xl text-blue-700 text-center">
+        AI Consultant :
+      </h4>
+      <div className="mt-2 flex-1 overflow-y-auto whitespace-pre-line">
+        {botReply}
       </div>
+      {sessionId && (
+        <p className="mt-2 text-xs text-gray-400 text-right">
+          Session ID: {sessionId}
+        </p>
+      )}
+    </div>
+  ) : (
+    <div className="bg-gray-100 border border-dashed border-gray-300 p-4 rounded-lg text-center text-gray-400 h-full flex items-center justify-center">
+      AI response will appear here...
+    </div>
+  )}
+</div>
+
 
 
 {/* about us */}
